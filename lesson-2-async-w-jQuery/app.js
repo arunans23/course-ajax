@@ -1,4 +1,6 @@
 /* eslint-env jquery */
+var unsplashKey = config.UNSPLASH_CLIENT_API_KEY;
+var nytimesKey = config.NYTIMES_CLIENT_API_KEY;
 
 (function () {
   const form = document.querySelector('#search-form');
@@ -14,7 +16,7 @@
       $.ajax({
         url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
         headers: {
-          Authorization: 'Client-ID 3587b523b1766fefb76af778545514ed37ba58211895ca36c1725e2490738028'
+          Authorization: 'Client-ID' + unsplashKey;
         }
       }).done(addImage)
       .fail(function(err){
@@ -23,7 +25,7 @@
 
 
       $.ajax({
-        url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=5daba748a51c4855bedd6d5399b476d3`,
+        url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=` + nytimesKey,
       }).done(addArticles)
       .fail(function(err){
         console.log(error);

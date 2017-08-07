@@ -17,7 +17,7 @@
         unsplashRequest.onerror = function(err){
           console.log(err);
         }
-        unsplashRequest.setRequestHeader('Authorization', 'Client-ID 3587b523b1766fefb76af778545514ed37ba58211895ca36c1725e2490738028');
+        unsplashRequest.setRequestHeader('Authorization', 'Client-ID ' + unsplashKey);
         unsplashRequest.send();
 
 
@@ -28,7 +28,7 @@
         articleRequest.onerror = function(err){
           console.log(err);
         }
-        articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=5daba748a51c4855bedd6d5399b476d3`);
+        articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=` + nytimesKey);
         articleRequest.send();
 
 

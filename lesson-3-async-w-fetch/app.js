@@ -1,3 +1,6 @@
+var unsplashKey = config.UNSPLASH_CLIENT_API_KEY;
+var nytimesKey = config.NYTIMES_CLIENT_API_KEY;
+
 (function () {
     const form = document.querySelector('#search-form');
     const searchField = document.querySelector('#search-keyword');
@@ -11,22 +14,23 @@
 
         fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {
           headers: {
-              Authorization: 'Client-ID 3587b523b1766fefb76af778545514ed37ba58211895ca36c1725e2490738028'
+              Authorization: 'Client-ID ' + unsplashKey
             }
         }).then(response => response.json())
         .then(addImage)
         .catch( e =>console.log(e));
 
 
-        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=5daba748a51c4855bedd6d5399b476d3`, {})
+        fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=` + nytimesKey, {})
         .then(response => response.json())
         .then(addArticles)
         .catch(e => console.log(e));
-        
+
 
     });
 
     function addImage(images){
+
       const firstImage = images.results[0];
 
       responseContainer.insertAdjacentHTML('afterbegin', `<figure>
