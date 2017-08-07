@@ -16,7 +16,7 @@ var nytimesKey = config.NYTIMES_CLIENT_API_KEY;
       $.ajax({
         url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
         headers: {
-          Authorization: 'Client-ID' + unsplashKey;
+          Authorization: 'Client-ID ' + unsplashKey
         }
       }).done(addImage)
       .fail(function(err){
