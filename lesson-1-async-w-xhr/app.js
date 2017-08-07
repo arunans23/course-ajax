@@ -1,3 +1,6 @@
+var unsplashKey = config.UNSPLASH_CLIENT_API_KEY;
+var nytimesKey = config.NYTIMES_CLIENT_API_KEY;
+
 (function () {
 
     const form = document.querySelector('#search-form');
